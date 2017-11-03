@@ -37,7 +37,6 @@ for(var key in obj) {
 //forEach
 console.log("--------------------------------TASK 3-------------------------------------");
 function forEach (array, method) {
-	// console.log(arguments);
 	for(var key in array) {
 		method(array[key], key, array);
 	}
