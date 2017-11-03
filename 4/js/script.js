@@ -37,9 +37,9 @@ for(var key in obj) {
 //forEach
 console.log("--------------------------------TASK 3-------------------------------------");
 function forEach (array, method) {
-	console.log(arguments);
+	// console.log(arguments);
 	for(var key in array) {
-		method(key, arguments[0][key], arguments[0]);
+		method(array[key], key, array);
 	}
 }
 arr = [3, 4, 5, 8];
@@ -62,3 +62,5 @@ console.log(sqrtArr);
 var arr2 = [-7, 8, 4, -5];
 var absArr =  map(arr2, Math.abs);
 console.log(absArr);
+
+
