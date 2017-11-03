@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Homework 4</title>
+	<script>
+		// work with strings
+		var resString, firstString = "Here is string ===> ", secondString = 'one more string';
+		resString = firstString + ' ' + secondString;
+		console.log("work with strings");
+		console.log(resString);
+
+		// work with numbers
+		var a = 15, b = 10;
+		console.log("work with numbers");
+		console.log(" a = ", a, "\n b = ", b);
+		console.log("a + b = ", a + b);
+		console.log("a - b = ", a - b);
+		console.log("b - a = ", b - a);
+		console.log("a * b = ", a * b);
+		console.log("a / b = ", a / b);
+		console.log("b / a = ", b / a);
+		console.log("a % b = ", a % b);
+		console.log("b % a = ", b % a);
+		console.log("a >> b = ", a >> b);
+		console.log("b >> b = ", b >> a);
+		console.log("a << b = ", a << b);
+		console.log("b << b = ", b << a);
+
+		// work with boolean
+		console.log("work with bool");
+		console.log("'abc' < 'dfe' => ", "abc" < "dfe"); // true
+		console.log("5 > '5'       => ", 5 > "5"); // false
+		console.log("16 != '16'    => ", 16 != "16"); // false
+		console.log("15 === 15     => ", 15 === 15); // trie
+
+		// work with confirm and promt
+		console.log("work with confirm and promt");
+		var firstVar = confirm('True or false?');
+		console.log (typeof(firstVar)); // boolean (doesn't matter OK or Cancel)
+		var secondVar =  prompt('String or null?');
+		console.log (typeof(secondVar)); // string if OK and object if Cancel
+	</script>
+</head>
+<body>
+</body>
+</html>
