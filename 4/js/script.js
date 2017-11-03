@@ -6,7 +6,18 @@ for(var i = 0; i < 100; i++) {
 	arr[i] = N;
 	N++;
 }
-console.log(arr);
+console.log("Четные:");
+for(var i = 0; i < 100; i++) {
+	if (arr[i] % 2 == 0) {
+		console.log(arr[i]);		
+	}
+}
+console.log("Четные:");
+for(var i = 0; i < 100; i++) {
+	if (arr[i] % 2 != 0) {
+		console.log(arr[i]);		
+	}
+}
 
 
 //object
