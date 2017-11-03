@@ -51,7 +51,7 @@ console.log("--------------------------------TASK 4-----------------------------
 function map (array, operation) {
 	var resArr = [array.length];
 	for (var i = 0; i < array.length; i++) {
-		resArr[i] = operation(array[i]);
+		resArr[i] = operation(array[i], i, array);
 	}
 	return resArr;
 }
