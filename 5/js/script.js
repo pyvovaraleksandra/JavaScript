@@ -32,3 +32,19 @@ function generateRange(min, max, step) {
 
 var arr = generateRange(1, 7, 1);
 console.log(arr);
+
+// task 4
+function cutIt(stringArray) {
+	var minLength = stringArray[0].length;
+	for (var i = 0; i < stringArray.length; i++) {
+		if (stringArray[i].length < minLength)
+			minLength = stringArray[i].length;
+	}
+	for (var i = 0; i < stringArray.length; i++) {
+		stringArray[i] = stringArray[i].substr(0,minLength);
+	}
+	return stringArray;
+}
+
+var arr = cutIt(["codewars","javascript","java"]);
+console.log(arr);
