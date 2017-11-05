@@ -1,10 +1,9 @@
-// task 1. find substring
-function isSubString (str) {
-	str = str.toLowerCase();
+// task 2. expanded function
+function isSubString (string, subString) {
+	string = string.toLowerCase();
+	subString = subString.toLowerCase();
 
-	var subStr = "english";
-
-	if (str.indexOf(subStr) != -1)
+	if (string.indexOf(subString) != -1)
 	{
 		return true;
 	} else {
@@ -13,7 +12,8 @@ function isSubString (str) {
 }
 
 var str = (prompt("Enter a string: "));
-var result = isSubString(str);
+var subStr = (prompt("Enter a string for searching: "));
+var result = isSubString(str, subStr);
 console.log(result);
 
 
