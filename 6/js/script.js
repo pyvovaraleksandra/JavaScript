@@ -10,10 +10,10 @@ function isSubString (str) {
 
 // task 2
 function escapeRegExp(string){
-  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+ 	return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 function isSubString (string, subString) {
-	return new RegExp(escapeRegExp(subString), 'i').test(escapeRegExp(string));
+	return new RegExp(escapeRegExp(subString), 'i').test(string);
 }
 
 var str = (prompt("Enter a string: "));
