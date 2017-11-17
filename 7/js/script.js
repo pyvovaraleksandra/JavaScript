@@ -5,7 +5,6 @@ function diffDate(date) {
 
 	hours = (currentDate - date)/3600000;
 	hours = Math.round(hours);
-	console.log(hours);
 
 	if (hours > 0) {
 		if (hours <= 2) {
@@ -20,5 +19,6 @@ function diffDate(date) {
 	}
 }
 
-var test = diffDate("11.18.2017 2:00");
-console.log(test);
+var date = prompt("enter date:");
+date = diffDate(date);
+console.log(date);
