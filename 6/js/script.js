@@ -37,6 +37,7 @@ console.log(length);
 var string = "Привет   \n\t    мир!";
 console.log(string);
 string = string.replace(/[ \t\n]+/g, ' ');
+// [ \t\n]  ===   \s - это все непонятные символы
 console.log(string);
 
 
@@ -44,3 +45,6 @@ console.log(string);
 var string = "Привет   \n\t    мир! Один, два, \n \t три.";
 var words = string.split(/[ \t\n]+/);
 console.log(words);
+
+
+//http://www.exlab.net/tools/sheets/regexp.html
