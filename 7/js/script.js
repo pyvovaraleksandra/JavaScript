@@ -8,17 +8,34 @@ function diffDate(date) {
 
 	if (hours > 0) {
 		if (hours <= 2) {
-			return "Сейчас " + hours + " час до текущего времени";
+			return "Сейчас " + hours + " час от текущего времени";
 		}
-		return "Осталось " + hours + " часов";
+		return "Прошло " + hours + " часов";
 	} else {
 		if (hours >= -2) {
-			return "Сейчас " + Math.abs(hours) + " час от текущего времени";
+			return "Сейчас " + Math.abs(hours) + " час до текущего времени";
 		}
-		return "Прошло " + Math.abs(hours) + " часов";
+		return "Осталось " + Math.abs(hours) + " часов";
 	}
 }
 
 var date = prompt("enter date:");
 date = diffDate(date);
 console.log(date);
+
+
+//task 2
+function getMonth(month) {
+	if (month > 12 || month < 1) {
+		throw new RangeError("Число некорректно");
+	}
+	var months = ["январь", "февраль", "март", "апрель", "май", "июнь", "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь"];
+	return months[month-1];
+}
+
+try {
+	monthName = getMonth(0);
+} catch (e) {
+	monthName = undefined;
+}
+console.log(monthName);
