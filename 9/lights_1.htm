@@ -49,10 +49,12 @@
 
         var count = 0;
         oldColor = [];
+        orderLights = [];
 
         function processButtonClick(element) {
             var parent = element.parentElement;
             var light = parent.querySelector(".light");
+            orderLights.push(light);
             var numLights = document.getElementsByClassName("light");
 
             if (light.style.backgroundColor !== "blue") {
@@ -65,12 +67,12 @@
             if (count == numLights.length) {
                 setTimeout("alert('DONE!')", 300);
 
-                var lights = document.getElementsByClassName("light");
-
                 setTimeout(function() {
                     for (var i = 0; i <= numLights.length-1; i++) {
-                        lights[i].style.backgroundColor = oldColor[i];
+                        orderLights[i].style.backgroundColor = oldColor[i];
                     }
+                    oldColor = [];
+                    orderLights = [];
                 }, 1000);
 
                 count = 0;

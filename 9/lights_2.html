@@ -38,7 +38,7 @@
             <button>Click me</button>
             <div><span><div>
                 <!-- оторвался от души с тегами -->
-                <div class="light" style="background-color: red;"></div>
+                <div class="light" style="background-color: yellow;"></div>
             </div></span>
             </div>
         </div>
@@ -53,7 +53,7 @@
                 </div>
             </div>
 
-            <div class="light" style="background-color: green;"></div>
+            <div class="light" style="background-color: pink;"></div>
         </div>
     </div>
 
@@ -68,6 +68,7 @@
 
         var count = 0;
         oldColor = [];
+        orderLights = [];
 
         function processButtonClick (element) {
             var parent = element.parentElement;
@@ -78,6 +79,7 @@
             }
 
             var light = parent.querySelector(".light"); //current light
+            orderLights.push(light);
             var numLights = document.getElementsByClassName("light"); //number of all lights
 
             // paint current light with blue
@@ -85,7 +87,6 @@
                 oldColor.push(light.style.backgroundColor);
                 light.style.backgroundColor = "blue";
                 count++;
-                console.log(count);
             }
 
             // paint lights back if all of them are blue
@@ -94,10 +95,13 @@
                 var lights = document.getElementsByClassName("light");
                 setTimeout(function() {
                     for (var i = 0; i <= numLights.length-1; i++) {
-                        lights[i].style.backgroundColor = oldColor[i];
+                        orderLights[i].style.backgroundColor = oldColor[i];
                     }
+                    oldColor = [];
+                    orderLights = [];
                 }, 1000);
                 count = 0;
+                
             }
         }
     </script>
