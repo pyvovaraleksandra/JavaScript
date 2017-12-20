@@ -1,194 +1,192 @@
 var allThemes = ['001', '002', '003', '004', '005', '217', '218', '219', '220', '221'];
+// var findButton = $('.selector-find')[0],
 
-window.onload = function(){
-	var
-		currentTheme = document.querySelector('.current-theme'),
-		changeTheme = document.querySelector('.change-theme');
+(function( $ ) {
+	var findButton, nextButton, prevButton, parentButton, childButton, leftButton, rightButton;
+	var elem;
+	    
+	window.onload = function(){
+		var
+			currentTheme = document.querySelector('.current-theme'),
+			changeTheme = document.querySelector('.change-theme');
 
-	changeTheme.addEventListener('click', function() {
-		var newThemeNo = allThemes.pop();
-		currentTheme.href = 'http://www.csszengarden.com/' + newThemeNo + '/' + newThemeNo + '.css';
+		findButton = $('.selector-find');
+		nextButton = $('.selector-next');
+		prevButton = $('.selector-prev');
+		parentButton = $('.nav-top');
+		childButton = $('.nav-bottom');
+		leftButton = $('.nav-left');
+		rightButton = $('.nav-right');
 
-		var nextButton = document.getElementsByClassName("selector-next")[0];
-		allThemes.unshift(newThemeNo);
-	});
+		changeTheme.addEventListener('click', function() {
+			var newThemeNo = allThemes.pop();
+			currentTheme.href = 'http://www.csszengarden.com/' + newThemeNo + '/' + newThemeNo + '.css';
 
-	var findButton = $('.selector-find')[0],
-		nextButton = $('.selector-next')[0],
-		prevButton = $('.selector-prev')[0],
-		parentButton = $('.nav-top')[0],
-		childButton = $('.nav-bottom')[0],
-		leftButton = $('.nav-left')[0],
-		rightButton = $('.nav-right')[0];
+			var nextButton = document.getElementsByClassName("selector-next")[0];
+			allThemes.unshift(newThemeNo);
+		});
 
-	//find
-	findButton.addEventListener('click', function() {
-		resetAll();
-		current = 0;
-
-		var selector = $('.selector').val().trim();
-
-		if (!selector) {
-			alert("Please, write any selector");
-			return;
-		}
-
-		queyRez = $(selector);
-		rezLength =  $(selector).length;
-		elem = $(selector)[0];
-
-		if (rezLength) {
-			color(elem);
-		} else {
-			alert("There are not elements. Please, try another query");
-			return;
-		}
 		
-		checkNextPrev();
-		checkDOMButtons();
-	});
 
-	//next
-	nextButton.addEventListener('click', function() {
-		resetAll()
-		current++;
+		//find
+		findButton.click( function() {
+			if (elem)
+				defaultColor(elem);
 
-		elem = queyRez[current];
-		color(elem);
+			current = 0;
 
-		checkNextPrev();
-		checkDOMButtons();
-	});
+			var selector = $('.selector').val().trim();
 
-	//previous
-	prevButton.addEventListener('click', function() {
-		resetAll()
-		current--;
+			if (!selector) {
+				alert("Please, write any selector");
+				return;
+			}
 
-		elem = queyRez[current];
-		color(elem);
+			queyRez = $(selector);
+			rezLength =  $(selector).length;
+			elem = $(selector)[0];
 
-		checkNextPrev();
-		checkDOMButtons();
-	});
-	
-	//----DOM TREE----
-	//parent
-	parentButton.addEventListener('click', function() {
-		toggleButton(nextButton, false);
-		toggleButton(prevButton, false);
-		resetAll();
+			if (rezLength) {
+				color(elem);
+			} else {
+				alert("There are not elements. Please, try another query");
+				return;
+			}
+			
+			checkNextPrev();
+			checkDOMButtons();
+		});
 
-		elem = $(elem).parents()[0];
-		color(elem);
+		//next
+		nextButton.click('click', function() {
+			defaultColor(elem);
+			current++;
 
-		checkDOMButtons();	
-	})
+			elem = queyRez[current];
+			color(elem);
 
-	//first child
-	childButton.addEventListener('click', function() {
-		toggleButton(nextButton, false);
-		toggleButton(prevButton, false);
-		resetAll();
+			checkNextPrev();
+			checkDOMButtons();
+		});
 
-		elem = $(elem).children()[0];
-		color(elem);
+		//previous
+		prevButton.click(function() {
+			defaultColor(elem);
+			current--;
 
-		checkDOMButtons();
-	});
+			elem = queyRez[current];
+			color(elem);
 
-	//previous sibling
-	leftButton.addEventListener('click', function() {
-		toggleButton(nextButton, false);
-		toggleButton(prevButton, false);
-		resetAll();
+			checkNextPrev();
+			checkDOMButtons();
+		});
+		
+		//----DOM TREE----
+		//parent
+		parentButton.click(function() {
+			toggleButton(nextButton, false);
+			toggleButton(prevButton, false);
+			defaultColor(elem);
 
-		elem = $(elem).prev()[0];
-		color(elem);
+			elem = $(elem).parents()[0];
+			color(elem);
 
-		checkDOMButtons();		
-	});
+			checkDOMButtons();	
+		})
 
-	//next sibling
-	rightButton.addEventListener('click', function() {
-		toggleButton(nextButton, false);
-		toggleButton(prevButton, false);
-		resetAll();
+		//first child
+		childButton.click(function() {
+			toggleButton(nextButton, false);
+			toggleButton(prevButton, false);
+			defaultColor(elem);
 
-		elem = $(elem).next()[0];
-		color(elem);
+			elem = $(elem).children()[0];
+			color(elem);
 
-		checkDOMButtons();
-	});
+			checkDOMButtons();
+		});
 
-};
+		//previous sibling
+		leftButton.click(function() {
+			toggleButton(nextButton, false);
+			toggleButton(prevButton, false);
+			defaultColor(elem);
 
-function color(element) {
-	element.style.outline = "3px solid red";
-	element.style.backgroundColor = "lightblue";
-}
+			elem = $(elem).prev()[0];
+			color(elem);
 
-function resetAll() {
-	var elements = document.querySelectorAll('*[style="outline: red solid 3px; background-color: lightblue;"]');
-	if (elements.length) {
-		for (var i = 0; i <= elements.length-1; i++) {
-			defaultColor(elements[i]);
+			checkDOMButtons();		
+		});
+
+		//next sibling
+		rightButton.click(function() {
+			toggleButton(nextButton, false);
+			toggleButton(prevButton, false);
+			defaultColor(elem);
+
+			elem = $(elem).next()[0];
+			color(elem);
+
+			checkDOMButtons();
+		});
+
+	};
+
+	function color(element) {
+		element.style.outline = "3px solid red";
+		element.style.backgroundColor = "lightblue";
+	}
+
+	function defaultColor(element) {
+		element.style.outline = "none";
+		element.style.backgroundColor = "";
+	}
+
+	function toggleButton(button, enable) {
+		button.prop('disabled',  !enable);
+	}
+
+	function checkNextPrev() {
+		// check for prev
+		if (current === 0) {
+			toggleButton(prevButton, false);
+		} else {
+			toggleButton(prevButton, true);
+		}
+		// check for next
+		if(current === rezLength-1) {
+			toggleButton(nextButton, false);
+		} else {
+			toggleButton(nextButton, true);
 		}
 	}
-}
 
-function toggleButton(button, enable) {
-	button.disabled = !enable;
-}
-
-function checkNextPrev() {
-	var nextButton = $('.selector-next')[0],
-		prevButton = $('.selector-prev')[0];
-
-	// check for next
-	if (current === 0) {
-		toggleButton(prevButton, false);
-	} else {
-		toggleButton(prevButton, true);
+	function checkDOMButtons() {
+		// check for if parent isn't body and html
+		if ($(elem).parents().length-2 <= 0) {
+			toggleButton(parentButton, false);
+		} else {
+			toggleButton(parentButton, true);	
+		}
+		// check for child
+		if ($(elem).children().length) {
+			toggleButton(childButton, true);
+		} else {
+			toggleButton(childButton, false);
+		}
+		// check for prevSibl
+		if ($(elem).prev().length) {
+			toggleButton(leftButton, true);
+		} else {
+			toggleButton(leftButton, false);
+		}	
+		// check for nextSibl
+		if ($(elem).next().length) {
+			toggleButton(rightButton, true);
+		} else {
+			toggleButton(rightButton, false);
+		}
 	}
-	// check for prev
-	if(current === rezLength-1) {
-		toggleButton(nextButton, false);
-	} else {
-		toggleButton(nextButton, true);
-	}
-}
-
-function checkDOMButtons() {
-	var	parentButton = $('.nav-top')[0],
-		childButton = $('.nav-bottom')[0],
-		leftButton = $('.nav-left')[0],
-		rightButton = $('.nav-right')[0];
-
-	// check for parent
-	if ($(elem).parents().length-2 <= 0) {
-		toggleButton(parentButton, false);
-	} else {
-		toggleButton(parentButton, true);	
-	}
-	// check for child
-	if ($(elem).children().length) {
-		toggleButton(childButton, true);
-	} else {
-		toggleButton(childButton, false);
-	}
-	// check for prevSibl
-	if ($(elem).prev().length) {
-		toggleButton(leftButton, true);
-	} else {
-		toggleButton(leftButton, false);
-	}	
-	// check for nextSibl
-	if ($(elem).next().length) {
-		toggleButton(rightButton, true);
-	} else {
-		toggleButton(rightButton, false);
-	}
-}
+})(jQuery);
 
 
